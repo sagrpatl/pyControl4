@@ -1,5 +1,5 @@
 '''
-Author: Sagar Patel
+Author: sapatel91
 Date: March 2, 2014
 File: getControl4Items.py
 
