@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import socket
 
 # Insert the IP of your Control4 system here. Can be obtained from Composer.
-TCP_IP = '192.168.1.10'
+TCP_IP = '192.168.1.10' # Will need to change for your system's IP
 TCP_PORT = 5020
 BUFFER_SIZE = 8192
 
