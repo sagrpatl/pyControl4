@@ -5,6 +5,9 @@ File: lightsControl4.py
 
 Purpose: Set or get Control4 light intensity
 Usage: python lightsControl4 <id> <value>
+
+Disclaimer: USE AT YOUR RISK, I TAKE NO RESPONSIBILITY
+            Most likely there won't be any though
 '''
 import socket
 import time

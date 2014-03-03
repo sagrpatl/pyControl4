@@ -4,6 +4,9 @@ Date: March 2, 2014
 File: getControl4Items.py
 
 Purpose: Prints ID and Name of various items from a Control4 system
+
+Disclaimer: USE AT YOUR RISK, I TAKE NO RESPONSIBILITY
+            Most likely there won't be any though
 '''
 
 from bs4 import BeautifulSoup
