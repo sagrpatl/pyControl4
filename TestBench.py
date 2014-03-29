@@ -1,3 +1,3 @@
-import Control4Lights
+from Modules.Control4Lights import *
 
 print "hello"
