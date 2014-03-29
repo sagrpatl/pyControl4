@@ -10,6 +10,7 @@ Disclaimer: USE AT YOUR RISK, I TAKE NO RESPONSIBILITY
 '''
 
 import socket
+from bs4 import BeautifulSoup
 
 #Global variable used to share socket connection between classes
 socketConn = 0
@@ -45,7 +46,7 @@ class C4Light:
         percent - Intensity
         time - Duration in milliseconds
     '''
-    def rampToLevel(percent, time):
+    def rampToLevel(self,percent, time):
         MESSAGE = '<c4soap name="SendToDeviceAsync" async="1"><param name="data" type="STRING"><devicecommand><command>RAMP_TO_LEVEL</command><params><param><name>TIME</name><value type="INTEGER"><static>%d</static></value></param><param><name>LEVEL</name><value type="PERCENT"><static>%d</static></value></param></params></devicecommand></param><param name="idDevice" type="INT">%d</param></c4soap>' % (time, percent, self.id)
         socketConn.sendall(MESSAGE + "\0")
     
@@ -53,10 +54,10 @@ class C4Light:
     Returns the light level for a dimmer. Value between 0 and 100.
     NOTE: will return an error if used on light switches use getLightState instead
     '''
-    def getLevel(id):
+    def getLevel(self):
         MESSAGE = '<c4soap name="GetVariable" async="False"><param name = "iddevice" type = "INT">%d</param><param name = "idvariable" type = "INT">1001</param></c4soap>' % (self.id)
-        directorConn.sendall(MESSAGE + "\0")
-        data = directorConn.recv(BUFFER_SIZE)
+        socketConn.sendall(MESSAGE + "\0")
+        data = socketConn.recv(BUFFER_SIZE)
         data = BeautifulSoup(data)
         value = data.find("variable")
         value = value.findAll(text=True)
