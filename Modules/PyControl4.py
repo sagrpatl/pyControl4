@@ -69,7 +69,16 @@ class C4Light:
         value = value.findAll(text=True)
         value = ''.join(value)
         return value
-        
-        
-        
     
+    '''
+    Returns the light state. Output is 0 or 1.
+    '''
+    def getLightState(self):
+        MESSAGE = '<c4soap name="GetVariable" async="False"><param name = "iddevice" type = "INT">%d</param><param name = "idvariable" type = "INT">1000</param></c4soap>' % (self.id)
+        socketConn.sendall(MESSAGE + "\0")
+        data = socketConn.recv(BUFFER_SIZE)
+        data = BeautifulSoup(data)
+        value = data.find("variable")
+        value = value.findAll(text=True)
+        value = ''.join(value)
+        return value
