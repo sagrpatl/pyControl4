@@ -17,6 +17,12 @@ socketConn = 0
 BUFFER_SIZE = 8192
 
 class C4SoapConn:
+    '''
+    Establish connection to Control4 system
+    Parameters: 
+        TCP_IP - IP Address of system
+        TCP_PORT - should be 5020
+    '''
     def __init__(self, TCP_IP, TCP_PORT):
         global socketConn
         socketConn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
