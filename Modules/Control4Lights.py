@@ -8,3 +8,16 @@ Purpose: Encapsulate Control4 Lights
 Disclaimer: USE AT YOUR RISK, I TAKE NO RESPONSIBILITY
             Most likely there won't be any though
 '''
+import socket
+
+class C4Light:
+    def __init__(self, id, socketConn):
+        self.id = id
+        self.directorConn = socketConn
+        
+    
+    def setLevel(value):
+        directorConn.conn
+        
+        
+    
