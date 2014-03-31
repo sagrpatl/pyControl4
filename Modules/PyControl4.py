@@ -27,6 +27,10 @@ class C4SoapConn:
         global socketConn
         socketConn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socketConn.connect((TCP_IP, TCP_PORT))
+    
+    @staticmethod
+    def Send(MESSAGE):
+         socketConn.sendall(MESSAGE + "\0")
 
 class C4Light:
     '''
@@ -82,3 +86,21 @@ class C4Light:
         value = value.findAll(text=True)
         value = ''.join(value)
         return value
+    
+class C4Remote:
+    def VolDown(self):
+        MESSAGE = '<c4soap name="SendToDeviceAsync" async="1"><param name="iddevice" type="number">10</param><param name="data" type="string"><devicecommand><command>PULSE_VOL_DOWN</command><params></params></devicecommand></param></c4soap>'
+        socketConn.sendall(MESSAGE + "\0")
+        
+    def VolUp(self):
+        MESSAGE = '<c4soap name="SendToDeviceAsync" async="1"><param name="iddevice" type="number">10</param><param name="data" type="string"><devicecommand><command>PULSE_VOL_UP</command><params></params></devicecommand></param></c4soap>'
+        socketConn.sendall(MESSAGE + "\0")
+        
+    def Info(self):
+        MESSAGE = '<c4soap name="SendToDeviceAsync" async="1"><param name="iddevice" type="number">10</param><param name="data" type="string"><devicecommand><command>INFO</command><params></params></devicecommand></param></c4soap>'
+        socketConn.sendall(MESSAGE + "\0")
+        
+    def Cancel(self):
+        MESSAGE = '<c4soap name="SendToDeviceAsync" async="1"><param name="iddevice" type="number">10</param><param name="data" type="string"><devicecommand><command>CANCEL</command><params></params></devicecommand></param></c4soap>'
+        socketConn.sendall(MESSAGE + "\0")
+        
