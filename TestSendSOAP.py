@@ -10,8 +10,6 @@ Disclaimer: USE AT YOUR RISK, I TAKE NO RESPONSIBILITY
 '''
 
 from Modules.PyControl4 import *
-import socket
-import time
 
 # Establish Connection
 # NOTE: IP Address will be different for your system
